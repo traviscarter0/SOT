@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "sot_backend": {
+      "main": "src/sot_backend/main.mo",
+      "type": "motoko"
+    },
+    "sot_frontend": {
+      "dependencies": [
+        "sot_backend"
+      ],
+      "source": [
+        "src/sot_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "sot_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
