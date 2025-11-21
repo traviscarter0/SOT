@@ -1,26 +1,63 @@
 {
+  "version": 1,
   "canisters": {
-    "sot_backend": {
-      "main": "src/sot_backend/main.mo",
-      "type": "motoko"
+    "sot_main": {
+      "type": "motoko",
+      "main": "src/sot_main/main.mo",
+      "declarations": {
+        "output": "src/declarations/sot_main",
+        "bindings": ["js", "ts", "did", "mo"]
+      }
     },
-    "sot_frontend": {
-      "dependencies": [
-        "sot_backend"
-      ],
-      "source": [
-        "src/sot_frontend/dist"
-      ],
-      "type": "assets",
-      "workspace": "sot_frontend"
+    "sot_escrow": {
+      "type": "motoko",
+      "main": "src/sot_escrow/main.mo",
+      "declarations": {
+        "output": "src/declarations/sot_escrow",
+        "bindings": ["js", "ts", "did", "mo"]
+      }
+    },
+    "sot_dispute": {
+      "type": "motoko",
+      "main": "src/sot_dispute/main.mo",
+      "declarations": {
+        "output": "src/declarations/sot_dispute",
+        "bindings": ["js", "ts", "did", "mo"]
+      }
+    },
+    "internet_identity": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+      },
+      "frontend": {}
     }
   },
   "defaults": {
     "build": {
-      "args": "",
-      "packtool": ""
+      "packtool": "",
+      "args": ""
     }
   },
-  "output_env_file": ".env",
-  "version": 1
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral",
+      "replica": {
+        "subnet_type": "system"
+      }
+    },
+    "ic": {
+      "providers": [
+        "https://icp0.io",
+        "https://icp-api.io"
+      ],
+      "type": "persistent"
+    }
+  },
+  "output_env_file": ".env"
 }
