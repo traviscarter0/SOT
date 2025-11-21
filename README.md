@@ -1,5 +1,5 @@
 # SOT - Freelancer Escrow Platform (Motoko) 
-Encode ChainFusion Hack
+# Encode ChainFusion Hack
 A decentralized freelancer escrow platform built on the Internet Computer using Motoko, with ckBTC for secure, trustless Bitcoin payments.
 
 ## 🌟 Features
